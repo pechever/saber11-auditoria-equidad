@@ -1,0 +1,13 @@
+,URBANO,RURAL
+tasa_hist_colegio,1.0908107,0.9461163
+cole_jornada_NOCHE,0.6653693,0.63495016
+"fami_trabajolabormadre_Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial",0.340675,0.3896245
+cole_jornada_SABATINA,0.31791273,0.31398895
+"fami_trabajolaborpadre_Trabaja en el hogar, no trabaja o estudia",0.2647505,0.28492013
+estu_horassemanatrabaja,0.2554065,0.27034268
+fami_trabajolabormadre_No sabe,0.2477329,0.2775885
+fami_trabajolabormadre_nan,0.2530852,0.25340095
+estu_dedicacioninternet_No Navega Internet,0.2629293,0.21260804
+"fami_trabajolaborpadre_Es dueño de un negocio grande, tiene un cargo de nivel directivo o gerencial",0.21956879,0.23681569
+fami_situacioneconomica,0.22153468,0.20929165
+fami_trabajolabormadre_No aplica,0.2047231,0.20515908

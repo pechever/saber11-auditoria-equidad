@@ -1,0 +1,472 @@
+{
+  "n_total": 2774006,
+  "n_train": 1653794,
+  "n_val": 562914,
+  "n_test": 557298,
+  "cohortes_train": [
+    "20182",
+    "20192",
+    "20222"
+  ],
+  "cohorte_val": "20232",
+  "cohorte_test": "20242",
+  "tasa_base_train": 0.2034479505911861,
+  "tasa_base_test": 0.200178360589846,
+  "n_colegios": 11230,
+  "tuning": {
+    "regresion_logistica": {
+      "params": {
+        "C": 0.1
+      },
+      "auc_val": 0.8188
+    },
+    "xgboost": {
+      "params": {
+        "n_estimators": 400,
+        "max_depth": 6,
+        "learning_rate": 0.1,
+        "subsample": 0.8,
+        "colsample_bytree": 0.8,
+        "min_child_weight": 20
+      },
+      "auc_val": 0.8334
+    }
+  },
+  "desempeno_E0": {
+    "regresion_logistica": {
+      "auc_roc": 0.8216540189573103,
+      "auc_pr": 0.5582703587989121,
+      "brier": 0.12159130570541249,
+      "sensibilidad": 0.53383411468371,
+      "especificidad": 0.8835506877343019
+    },
+    "xgboost": {
+      "auc_roc": 0.8353681848348027,
+      "auc_pr": 0.567236332688421,
+      "brier": 0.11916361153456617,
+      "sensibilidad": 0.5516811731908676,
+      "especificidad": 0.8880174272388102
+    }
+  },
+  "preregistro": {
+    "eje": "zona",
+    "metrica": "dif_fnr",
+    "capacidad": 0.2
+  },
+  "mejor_modelo": "xgboost",
+  "auditoria_E0": {
+    "zona": {
+      "primario": true,
+      "tabla": [
+        {
+          "grupo": "URBANO",
+          "n": 461290,
+          "tasa_base": 0.17253571505994061,
+          "tasa_seleccion": 0.1597801816644627,
+          "tpr": 0.4929826986141301,
+          "fnr": 0.5070173013858699,
+          "fpr": 0.0903036670063741,
+          "ppv": 0.5323383759582118
+        },
+        {
+          "grupo": "RURAL",
+          "n": 96008,
+          "tasa_base": 0.3329930839096742,
+          "tasa_seleccion": 0.39324847929339224,
+          "tpr": 0.6978104472943384,
+          "fnr": 0.30218955270566156,
+          "fpr": 0.24120053718104875,
+          "ppv": 0.5908886240233082
+        }
+      ],
+      "disparidades": {
+        "dif_paridad_demografica": 0.23346829762892954,
+        "dif_igualdad_oportunidad": 0.2048277486802083,
+        "dif_fnr": 0.2048277486802083,
+        "dif_fpr": 0.15089687017467465,
+        "dif_ppv": 0.058550248065096455,
+        "probabilidades_igualadas": 0.2048277486802083
+      },
+      "inferencia_cluster": {
+        "dif_paridad_demografica": {
+          "punto": 0.23445621335343775,
+          "ic_inf": 0.21654419556733842,
+          "ic_sup": 0.25280258619559864,
+          "p_permutacion": 0.006622516556291391,
+          "significativo": true
+        },
+        "dif_igualdad_oportunidad": {
+          "punto": 0.20397621152294207,
+          "ic_inf": 0.1846727280845889,
+          "ic_sup": 0.22392305362989,
+          "p_permutacion": 0.006622516556291391,
+          "significativo": true
+        },
+        "dif_fnr": {
+          "punto": 0.20397621152294204,
+          "ic_inf": 0.18467272808458896,
+          "ic_sup": 0.22392305362989012,
+          "p_permutacion": 0.006622516556291391,
+          "significativo": true
+        },
+        "dif_fpr": {
+          "punto": 0.1520890396147166,
+          "ic_inf": 0.13799836876061078,
+          "ic_sup": 0.16532869681956958
+        },
+        "dif_ppv": {
+          "punto": 0.058028684732162814,
+          "ic_inf": 0.04373809568178035,
+          "ic_sup": 0.07018733470618313
+        },
+        "probabilidades_igualadas": {
+          "punto": 0.20397621152294207,
+          "ic_inf": 0.1846727280845889,
+          "ic_sup": 0.22392305362989
+        }
+      }
+    },
+    "naturaleza": {
+      "primario": false,
+      "tabla": [
+        {
+          "grupo": "OFICIAL",
+          "n": 430357,
+          "tasa_base": 0.2158928517486645,
+          "tasa_seleccion": 0.20778098183601057,
+          "tpr": 0.5420779025088526,
+          "fnr": 0.45792209749114743,
+          "fpr": 0.11573703644434961,
+          "ppv": 0.5632408857078953
+        },
+        {
+          "grupo": "NO OFICIAL",
+          "n": 126941,
+          "tasa_base": 0.14690289189465972,
+          "tasa_seleccion": 0.1736239670398059,
+          "tpr": 0.5995280995280995,
+          "fnr": 0.40047190047190045,
+          "fpr": 0.10028349016095223,
+          "ppv": 0.5072595281306715
+        }
+      ],
+      "disparidades": {
+        "dif_paridad_demografica": 0.03415701479620467,
+        "dif_igualdad_oportunidad": 0.05745019701924692,
+        "dif_fnr": 0.057450197019246974,
+        "dif_fpr": 0.015453546283397387,
+        "dif_ppv": 0.05598135757722378,
+        "probabilidades_igualadas": 0.05745019701924692
+      },
+      "nota": "exploratorio: sin prueba de significancia (preregistro)"
+    },
+    "estrato_grupo": {
+      "primario": false,
+      "tabla": [
+        {
+          "grupo": "Desconocido",
+          "n": 1279,
+          "tasa_base": 0.5551211884284597,
+          "tasa_seleccion": 0.72556684910086,
+          "tpr": 0.8690140845070422,
+          "fnr": 0.13098591549295774,
+          "fpr": 0.546572934973638,
+          "ppv": 0.6648706896551724
+        },
+        {
+          "grupo": "Medio",
+          "n": 159112,
+          "tasa_base": 0.1580584745336618,
+          "tasa_seleccion": 0.1558587661521444,
+          "tpr": 0.5327050777366893,
+          "fnr": 0.46729492226331065,
+          "fpr": 0.08511305360435344,
+          "ppv": 0.5402233961046816
+        },
+        {
+          "grupo": "Bajo",
+          "n": 356254,
+          "tasa_base": 0.19554306758660955,
+          "tasa_seleccion": 0.1802646426426089,
+          "tpr": 0.49257137935489426,
+          "fnr": 0.5074286206451057,
+          "fpr": 0.1043507995715148,
+          "ppv": 0.5343195266272189
+        },
+        {
+          "grupo": "Sin estrato",
+          "n": 26254,
+          "tasa_base": 0.44271349127751963,
+          "tasa_seleccion": 0.6004037480003047,
+          "tpr": 0.8257764776735782,
+          "fnr": 0.17422352232642174,
+          "fpr": 0.42136559360262454,
+          "ppv": 0.6088942460191588
+        },
+        {
+          "grupo": "Alto",
+          "n": 14399,
+          "tasa_base": 0.3065490659073547,
+          "tasa_seleccion": 0.3993332870338218,
+          "tpr": 0.8198912550974173,
+          "fnr": 0.1801087449025827,
+          "fpr": 0.21342013019529293,
+          "ppv": 0.6293913043478261
+        }
+      ],
+      "disparidades": {
+        "dif_paridad_demografica": 0.5697080829487156,
+        "dif_igualdad_oportunidad": 0.37644270515214795,
+        "dif_fnr": 0.376442705152148,
+        "dif_fpr": 0.46145988136928456,
+        "dif_ppv": 0.13055116302795344,
+        "probabilidades_igualadas": 0.46145988136928456
+      },
+      "nota": "exploratorio: sin prueba de significancia (preregistro)"
+    },
+    "sexo": {
+      "primario": false,
+      "tabla": [
+        {
+          "grupo": "M",
+          "n": 259069,
+          "tasa_base": 0.18383133450933922,
+          "tasa_seleccion": 0.17748167476618198,
+          "tpr": 0.5231076115485565,
+          "fnr": 0.47689238845144355,
+          "fpr": 0.0996339456309945,
+          "ppv": 0.5418225315354502
+        },
+        {
+          "grupo": "F",
+          "n": 298228,
+          "tasa_base": 0.21437624904435532,
+          "tasa_seleccion": 0.21956355540056602,
+          "tpr": 0.5729748330283265,
+          "fnr": 0.4270251669716735,
+          "fpr": 0.12312682729038178,
+          "ppv": 0.5594379963347587
+        }
+      ],
+      "disparidades": {
+        "dif_paridad_demografica": 0.042081880634384033,
+        "dif_igualdad_oportunidad": 0.049867221479770074,
+        "dif_fnr": 0.049867221479770074,
+        "dif_fpr": 0.023492881659387288,
+        "dif_ppv": 0.017615464799308422,
+        "probabilidades_igualadas": 0.049867221479770074
+      },
+      "nota": "exploratorio: sin prueba de significancia (preregistro)"
+    }
+  },
+  "auditoria_interseccional": {
+    "tabla": [
+      {
+        "grupo": "URBANO x Desconocido",
+        "n": 878,
+        "tasa_base": 0.4760820045558087,
+        "tasa_seleccion": 0.6674259681093394,
+        "tpr": 0.8277511961722488,
+        "fnr": 0.1722488038277512,
+        "fpr": 0.5217391304347826,
+        "ppv": 0.590443686006826
+      },
+      {
+        "grupo": "URBANO x Medio",
+        "n": 140167,
+        "tasa_base": 0.13441109533627743,
+        "tasa_seleccion": 0.12099852319019455,
+        "tpr": 0.4629511677282378,
+        "fnr": 0.5370488322717623,
+        "fpr": 0.06789914858193147,
+        "ppv": 0.5142688679245283
+      },
+      {
+        "grupo": "URBANO x Bajo",
+        "n": 294406,
+        "tasa_base": 0.1757301141960422,
+        "tasa_seleccion": 0.15241197529941644,
+        "tpr": 0.4534560074222978,
+        "fnr": 0.5465439925777021,
+        "fpr": 0.0882309308938064,
+        "ppv": 0.5228321187403892
+      },
+      {
+        "grupo": "RURAL x Bajo",
+        "n": 61848,
+        "tasa_base": 0.2898557754494891,
+        "tasa_seleccion": 0.31284762643901176,
+        "tpr": 0.6054554582473364,
+        "fnr": 0.39454454175266357,
+        "fpr": 0.19341545046788552,
+        "ppv": 0.5609592226988475
+      },
+      {
+        "grupo": "RURAL x Medio",
+        "n": 18945,
+        "tasa_base": 0.3330166270783848,
+        "tasa_seleccion": 0.4137767220902613,
+        "tpr": 0.7410049136154699,
+        "fnr": 0.25899508638453006,
+        "fpr": 0.2503956948401393,
+        "ppv": 0.5963770889144023
+      },
+      {
+        "grupo": "RURAL x Sin estrato",
+        "n": 11655,
+        "tasa_base": 0.5036465036465037,
+        "tasa_seleccion": 0.6942942942942943,
+        "tpr": 0.862350936967632,
+        "fnr": 0.13764906303236799,
+        "fpr": 0.5237683664649957,
+        "ppv": 0.6255561047948591
+      },
+      {
+        "grupo": "URBANO x Sin estrato",
+        "n": 14599,
+        "tasa_base": 0.39406808685526407,
+        "tasa_seleccion": 0.5254469484211247,
+        "tpr": 0.7884581957239701,
+        "fnr": 0.2115418042760299,
+        "fpr": 0.3543974677820484,
+        "ppv": 0.5913179507235041
+      },
+      {
+        "grupo": "RURAL x Alto",
+        "n": 3159,
+        "tasa_base": 0.4976258309591643,
+        "tasa_seleccion": 0.6752136752136753,
+        "tpr": 0.9204834605597965,
+        "fnr": 0.07951653944020357,
+        "fpr": 0.4322621298046629,
+        "ppv": 0.6783872480075012
+      },
+      {
+        "grupo": "URBANO x Alto",
+        "n": 11240,
+        "tasa_base": 0.252846975088968,
+        "tasa_seleccion": 0.321797153024911,
+        "tpr": 0.7642505277973258,
+        "fnr": 0.23574947220267417,
+        "fpr": 0.1720647773279352,
+        "ppv": 0.6004976499861764
+      },
+      {
+        "grupo": "RURAL x Desconocido",
+        "n": 401,
+        "tasa_base": 0.7281795511221946,
+        "tasa_seleccion": 0.8528678304239401,
+        "tpr": 0.928082191780822,
+        "fnr": 0.07191780821917808,
+        "fpr": 0.6513761467889908,
+        "ppv": 0.7923976608187134
+      }
+    ],
+    "disparidades": {
+      "dif_paridad_demografica": 0.7318693072337455,
+      "dif_igualdad_oportunidad": 0.47462618435852416,
+      "dif_fnr": 0.47462618435852405,
+      "dif_fpr": 0.5834769982070593,
+      "dif_ppv": 0.27812879289418513,
+      "probabilidades_igualadas": 0.5834769982070593
+    }
+  },
+  "E1_ceguera": {
+    "desempeno": {
+      "auc_roc": 0.8323593063115546,
+      "auc_pr": 0.5603122411004284,
+      "brier": 0.12008408078258147,
+      "sensibilidad": 0.548445217328947,
+      "especificidad": 0.8872075362487913
+    },
+    "disparidades_zona": {
+      "dif_paridad_demografica": 0.23892959407631292,
+      "dif_igualdad_oportunidad": 0.21449328471157575,
+      "dif_fnr": 0.2144932847115758,
+      "dif_fpr": 0.1557317825286238,
+      "dif_ppv": 0.058269358081747935,
+      "probabilidades_igualadas": 0.21449328471157575
+    }
+  },
+  "proxies": {
+    "zona": {
+      "clase_positiva": "RURAL",
+      "auc": 0.8510038480668738
+    },
+    "naturaleza": {
+      "clase_positiva": "OFICIAL",
+      "auc": 0.9204866160089461
+    },
+    "estrato_grupo": {},
+    "sexo": {
+      "clase_positiva": "F",
+      "auc": 0.6721277427496644
+    }
+  },
+  "E2_reponderacion": {
+    "desempeno": {
+      "auc_roc": 0.8317079446372603,
+      "auc_pr": 0.5675054641679744,
+      "brier": 0.11945380608015013,
+      "sensibilidad": 0.5457919127995052,
+      "especificidad": 0.8865434705062828
+    },
+    "disparidades_zona": {
+      "dif_paridad_demografica": 0.1755332542101435,
+      "dif_igualdad_oportunidad": 0.13183995837734286,
+      "dif_fnr": 0.1318399583773428,
+      "dif_fpr": 0.09900954753174394,
+      "dif_ppv": 0.10074171418921885,
+      "probabilidades_igualadas": 0.13183995837734286
+    }
+  },
+  "E4_umbral_por_grupo": {
+    "tasa_seleccion": 0.08118457270616439,
+    "disparidades_zona": {
+      "dif_paridad_demografica": 0.0482787608735641,
+      "dif_igualdad_oportunidad": 0.029923211261069227,
+      "dif_fnr": 0.029923211261069227,
+      "dif_fpr": 0.0056107419165945804,
+      "dif_ppv": 0.17790986141107168,
+      "probabilidades_igualadas": 0.029923211261069227
+    }
+  },
+  "E3_gradiente_exponenciado": {
+    "tasa_seleccion": 0.0895427580935155,
+    "n_entrenamiento": 150000,
+    "disparidades_zona": {
+      "dif_paridad_demografica": 0.06422911057461739,
+      "dif_igualdad_oportunidad": 0.039961390555458165,
+      "dif_fnr": 0.03996139055545811,
+      "dif_fpr": 0.019049958330052,
+      "dif_ppv": 0.130411639167629,
+      "probabilidades_igualadas": 0.039961390555458165
+    }
+  },
+  "sensibilidad_capacidad": {
+    "0.10": {
+      "dif_paridad_demografica": 0.15026323725698326,
+      "dif_igualdad_oportunidad": 0.20121204208359578,
+      "dif_fnr": 0.20121204208359578,
+      "dif_fpr": 0.0670938905061732,
+      "dif_ppv": 0.06848110482870484,
+      "probabilidades_igualadas": 0.20121204208359578
+    },
+    "0.20": {
+      "dif_paridad_demografica": 0.23346829762892954,
+      "dif_igualdad_oportunidad": 0.2048277486802083,
+      "dif_fnr": 0.2048277486802083,
+      "dif_fpr": 0.15089687017467465,
+      "dif_ppv": 0.058550248065096455,
+      "probabilidades_igualadas": 0.2048277486802083
+    },
+    "0.30": {
+      "dif_paridad_demografica": 0.2821712058835797,
+      "dif_igualdad_oportunidad": 0.17418650421639703,
+      "dif_fnr": 0.17418650421639706,
+      "dif_fpr": 0.2195517742860136,
+      "dif_ppv": 0.0681195596432046,
+      "probabilidades_igualadas": 0.2195517742860136
+    }
+  }
+}

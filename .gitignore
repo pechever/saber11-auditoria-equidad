@@ -1,0 +1,23 @@
+# microdatos: no se versionan (8,5 GB, propiedad del Icfes)
+data/raw/
+data/interim/
+data/processed/
+*.zip
+*.parquet
+*.TXT
+*.txt
+
+# puntos de control del flujo
+ckpt/
+*.pkl
+*.joblib
+
+# python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.ipynb_checkpoints/
+
+# sistema
+.DS_Store

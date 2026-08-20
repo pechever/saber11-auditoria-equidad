@@ -1,0 +1,32 @@
+cff-version: 1.2.0
+message: "Si utiliza este software o sus datos derivados, cite el artículo asociado."
+title: "Auditoría de equidad de modelos de aprendizaje automático sobre Saber 11"
+abstract: >-
+  Código y resultados de una auditoría de equidad sobre un modelo que predice
+  bajo desempeño en la prueba Saber 11, con 2.774.006 registros de 11.230
+  colegios colombianos entre 2018 y 2024.
+type: software
+authors:
+  - family-names: "Echeverría"
+    given-names: "Fabricio"
+    orcid: "https://orcid.org/0000-0002-4921-1111"
+    affiliation: "Corporación Universitaria Asturias, Bogotá, Colombia"
+    email: "pedro.echeverria@asturias.edu.co"
+license: MIT
+keywords:
+  - aprendizaje automático
+  - equidad algorítmica
+  - minería de datos educativos
+  - sesgo de selección
+  - variables sustitutas
+preferred-citation:
+  type: article
+  title: >-
+    Auditoría de equidad de modelos de aprendizaje automático para predecir
+    bajo desempeño en pruebas estandarizadas en Colombia
+  authors:
+    - family-names: "Echeverría"
+      given-names: "Fabricio"
+      orcid: "https://orcid.org/0000-0002-4921-1111"
+  journal: "Revista UIS Ingenierías"
+  year: 2026
