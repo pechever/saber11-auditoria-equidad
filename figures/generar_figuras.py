@@ -8,6 +8,7 @@ paleta comun de dos grises; el rojo queda reservado a lineas de referencia y
 anotaciones.
 """
 import argparse
+from decimal import Decimal, ROUND_HALF_UP
 from pathlib import Path
 
 import matplotlib
@@ -29,7 +30,14 @@ COMA = FuncFormatter(lambda v, _: f'{v:g}'.replace('.', ','))
 
 
 def n3(v):
-    return f'{v:.3f}'.replace('.', ',')
+    """Tres decimales con coma, redondeando al alza en los empates.
+
+    Python redondea al par mas cercano, asi que 0,9205 daria 0,920 mientras el
+    articulo reporta 0,921. Se fuerza ROUND_HALF_UP para que las figuras y el
+    texto coincidan.
+    """
+    d = Decimal(str(v)).quantize(Decimal('0.001'), rounding=ROUND_HALF_UP)
+    return f'{d}'.replace('.', ',')
 
 
 # ------------------------------------------------------------------ figura 1

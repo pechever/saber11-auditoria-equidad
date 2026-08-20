@@ -1,7 +1,18 @@
 # Coteja las cifras de las tablas del manuscrito contra los CSV de resultados.
-import re, pandas as pd
+#
+# Uso desde la raiz del repositorio:
+#     python src/verificar_cifras.py
+import argparse, re
+from pathlib import Path
+import pandas as pd
 
-txt = open('rui_contenido.md', encoding='utf-8').read()
+_ap = argparse.ArgumentParser(description='Coteja las tablas del articulo contra los resultados.')
+_ap.add_argument('--manuscrito', default='paper/rui_contenido.md')
+_ap.add_argument('--resultados', default='results/tables')
+_args = _ap.parse_args()
+RES = Path(_args.resultados)
+
+txt = open(_args.manuscrito, encoding='utf-8').read()
 
 def filas(cabecera_col0):
     """Devuelve las filas #TAB del bloque cuya primera celda de encabezado coincide."""
@@ -31,7 +42,7 @@ def cmp(etiqueta, doc, real, dec=3):
         fallos.append(f'{etiqueta}: documento {doc} vs datos {esperado}')
 
 # --- Tabla 7: escenarios de mitigacion ---
-esc = pd.read_csv('resultados_reales/tabla6_escenarios.csv')
+esc = pd.read_csv(RES / 'tabla6_escenarios.csv')
 b = filas('Escenario')
 for i, fila in enumerate(b[1:]):
     r = esc.iloc[i]
@@ -40,7 +51,7 @@ for i, fila in enumerate(b[1:]):
         cmp(f'Tabla 7 {fila[0]} {col}', num(fila[j]), r[col])
 
 # --- Tabla 5: tasas por zona del colegio ---
-z = pd.read_csv('resultados_reales/tasas_E0_zona.csv').set_index('grupo')
+z = pd.read_csv(RES / 'tasas_E0_zona.csv').set_index('grupo')
 b = filas('Grupo')
 for fila in b[1:]:
     r = z.loc[fila[0].upper()]
@@ -50,7 +61,7 @@ for fila in b[1:]:
         cmp(f'Tabla 5 {fila[0]} {col}', num(fila[j]), r[col])
 
 # --- Tabla 6: interseccional zona x estrato ---
-it = pd.read_csv('resultados_reales/tasas_interseccional.csv').set_index('grupo')
+it = pd.read_csv(RES / 'tasas_interseccional.csv').set_index('grupo')
 b6 = filas('Grupo')
 for bloque in [x for x in [b6] if x]:
     pass
