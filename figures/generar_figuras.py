@@ -194,32 +194,34 @@ def figura_3(res: Path, out: Path):
 
 # ------------------------------------------------------------------ figura 4
 def figura_4(res: Path, out: Path):
-    """Equidad frente a cobertura en los cinco escenarios de mitigacion."""
-    t = pd.read_csv(res / 'tabla6_escenarios.csv')
-    lab = ['E0\ncompleto', 'E1\nciego', 'E2\nreponderación',
-           'E3\nrestricción', 'E4\numbral grupo']
+    """Equidad, cobertura y capacidad discriminativa en los siete escenarios.
 
-    f, a = plt.subplots(figsize=(7.8, 3.6))
-    x = np.arange(len(t)); w = .38
+    Incluye E3' y E4', que repiten E3 y E4 a capacidad fija del 20% para que
+    las disparidades sean comparables a igualdad de cobertura.
+    """
+    t = pd.read_csv(res / 'escenarios_con_auc.csv')
+    lab = ['E0\ncompleto', 'E1\nciego', 'E2\nreponder.',
+           'E3\nrestricción', 'E4\numbral gr.', "E3'\ncap. fija", "E4'\ncap. fija"]
+
+    f, a = plt.subplots(figsize=(8.6, 3.8))
+    x = np.arange(len(t)); w = .28
     a.axvspan(2.5, 4.5, color='#F2F2F2', zorder=0)
-    a.bar(x - w / 2, t.dif_fnr, w, color=DK, edgecolor=DK, lw=1,
+    a.axvspan(4.5, 6.5, color='#E6E6E6', zorder=0)
+    a.bar(x - w, t.dif_fnr, w, color=DK, edgecolor=DK, lw=1,
           label='Disparidad de TFN', zorder=3)
-    a.bar(x + w / 2, t.recall_global, w, color=LT, edgecolor=DK, lw=1,
+    a.bar(x, t.recall_global, w, color=LT, edgecolor=DK, lw=1,
           label='Recall global (cobertura)', zorder=3)
-    for i, (d, r) in enumerate(zip(t.dif_fnr, t.recall_global)):
-        a.text(i - w / 2, d + .012, n3(d), ha='center', fontsize=8.5,
-               fontweight='bold', zorder=4)
-        a.text(i + w / 2, r + .012, n3(r), ha='center', fontsize=8.5,
-               fontweight='bold', zorder=4)
-    a.set_xticks(x); a.set_xticklabels(lab, fontsize=9)
-    a.set_ylim(0, .80)
+    a.bar(x + w, t.auc_roc, w, color='#FFFFFF', edgecolor=DK, lw=1, hatch='///',
+          label='AUC-ROC', zorder=3)
+    for i, (d, r, u) in enumerate(zip(t.dif_fnr, t.recall_global, t.auc_roc)):
+        for dx, v in ((-w, d), (0, r), (w, u)):
+            a.text(i + dx, v + .015, n3(v), ha='center', fontsize=7.2,
+                   fontweight='bold', zorder=4, rotation=90, va='bottom')
+    a.set_xticks(x); a.set_xticklabels(lab, fontsize=8.5)
+    a.set_ylim(0, 1.18)
     a.grid(alpha=.25, axis='y')
     a.yaxis.set_major_formatter(COMA1)
-    a.legend(fontsize=9, loc='upper left', framealpha=1, edgecolor='#BBB')
-    a.annotate('paridad a costa de atender\na la mitad de los estudiantes',
-               xy=(3.5, .32), xytext=(3.5, .72), ha='center', fontsize=8.5,
-               style='italic', color=AC,
-               arrowprops=dict(arrowstyle='->', color=AC, lw=1.1))
+    a.legend(fontsize=8.5, loc='upper left', ncol=3, framealpha=1, edgecolor='#BBB')
     f.tight_layout()
     f.savefig(out / 'Figura_4.png', dpi=300, bbox_inches='tight')
     plt.close(f)

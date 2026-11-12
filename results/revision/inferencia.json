@@ -1,0 +1,48 @@
+{
+ "parametros": {
+  "n_boot": 2000,
+  "n_perm": 5000,
+  "alpha": 0.05,
+  "semilla": 42,
+  "unidad_remuestreo": "colegio",
+  "unidad_permutacion": "colegio",
+  "metrica_contrastada": "dif_fnr",
+  "eje_contrastado": "zona",
+  "intervalo": "percentil 2,5 a 97,5",
+  "p_minimo_alcanzable": 0.0001999600079984003
+ },
+ "bootstrap": {
+  "dif_paridad_demografica": {
+   "punto": 0.23384712393096727,
+   "ic_inf": 0.21655502313881778,
+   "ic_sup": 0.25325439990724685
+  },
+  "dif_igualdad_oportunidad": {
+   "punto": 0.20457658302662193,
+   "ic_inf": 0.1849743643032205,
+   "ic_sup": 0.22577849068229738
+  },
+  "dif_fnr": {
+   "punto": 0.2045765830266219,
+   "ic_inf": 0.1849743643032204,
+   "ic_sup": 0.22577849068229733
+  },
+  "dif_fpr": {
+   "punto": 0.1513316287219094,
+   "ic_inf": 0.13737273935241245,
+   "ic_sup": 0.16564943961004014
+  },
+  "dif_ppv": {
+   "punto": 0.05821566292050056,
+   "ic_inf": 0.044738379358957414,
+   "ic_sup": 0.07102961601255353
+  },
+  "probabilidades_igualadas": {
+   "punto": 0.20457658302662193,
+   "ic_inf": 0.1849743643032205,
+   "ic_sup": 0.22577849068229738
+  },
+  "_n_replicas": 2000
+ },
+ "p_permutacion": 0.0001999600079984003
+}

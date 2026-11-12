@@ -48,7 +48,10 @@ ESPERADO = {20182: 555_319, 20192: 554_769, 20222: 543_706,
 
 
 def leer_cohorte(ruta: Path) -> pd.DataFrame:
-    df = pd.read_csv(ruta, sep=';', encoding='latin-1', low_memory=False,
+    # Los archivos del Icfes son UTF-8. Leerlos como latin-1 no falla, pero
+    # corrompe las tildes ("Educacion" -> "EducaciA3n") y deja fuera del mapeo
+    # ordinal a una cuarta parte de fami_educacionmadre, que acaba imputada.
+    df = pd.read_csv(ruta, sep=';', encoding='utf-8', low_memory=False,
                      usecols=lambda c: c in COLUMNAS,
                      dtype={'cole_cod_dane_establecimiento': 'str'})
 
