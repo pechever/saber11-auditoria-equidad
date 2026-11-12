@@ -1,0 +1,87 @@
+{
+ "supuestos": {
+  "share_poblacion_rural": 0.267,
+  "todos_los_ausentes_son_bajo_desempeno": true,
+  "fuente_share": "LEE, Informe 79"
+ },
+ "observado": {
+  "n_rural": 96008,
+  "n_total": 557298,
+  "P_rural": 31970,
+  "FN_rural": 9661,
+  "tfn_rural": 0.30218955270566156,
+  "tfn_urbano": 0.5070173013858699,
+  "brecha": 0.2048277486802083
+ },
+ "ausentes_m": 72020,
+ "phi_equilibrio": 0.6978104472943385,
+ "escenarios": [
+  {
+   "phi": 0.0,
+   "tfn_rural": 0.785,
+   "brecha": -0.278
+  },
+  {
+   "phi": 0.25,
+   "tfn_rural": 0.612,
+   "brecha": -0.105
+  },
+  {
+   "phi": 0.5,
+   "tfn_rural": 0.439,
+   "brecha": 0.068
+  },
+  {
+   "phi": 0.698,
+   "tfn_rural": 0.302,
+   "brecha": 0.205
+  },
+  {
+   "phi": 0.75,
+   "tfn_rural": 0.266,
+   "brecha": 0.241
+  },
+  {
+   "phi": 0.9,
+   "tfn_rural": 0.162,
+   "brecha": 0.345
+  },
+  {
+   "phi": 1.0,
+   "tfn_rural": 0.093,
+   "brecha": 0.414
+  }
+ ],
+ "tpr_subgrupos_rurales": [
+  {
+   "grupo": "RURAL x Bajo",
+   "n": 61848,
+   "tasa_base": 0.2898557754494891,
+   "tpr": 0.6054554582473365
+  },
+  {
+   "grupo": "RURAL x Medio",
+   "n": 18945,
+   "tasa_base": 0.3330166270783848,
+   "tpr": 0.7410049136154699
+  },
+  {
+   "grupo": "RURAL x Sin estrato",
+   "n": 11655,
+   "tasa_base": 0.5036465036465037,
+   "tpr": 0.8623509369676321
+  },
+  {
+   "grupo": "RURAL x Alto",
+   "n": 3159,
+   "tasa_base": 0.4976258309591643,
+   "tpr": 0.9204834605597965
+  },
+  {
+   "grupo": "RURAL x Desconocido",
+   "n": 401,
+   "tasa_base": 0.7281795511221946,
+   "tpr": 0.928082191780822
+  }
+ ]
+}
