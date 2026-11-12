@@ -38,7 +38,8 @@ partir de las variables restantes.
 │   ├── build_rui.py            arma el .docx sobre la plantilla de la revista
 │   └── rui_contenido.md        texto del artículo con marcas de estructura
 ├── data/
-│   └── README.md               cómo obtener los microdatos (no se incluyen)
+│   ├── muestra_analitica.parquet   2.774.006 filas, 33 variables (31 MB)
+│   └── README.md               qué incluye y cómo obtener los originales
 ├── requirements.txt
 ├── LICENSE                     MIT, para el código
 └── LICENSE-DATA                CC BY 4.0, para los datos derivados y las figuras
@@ -46,15 +47,19 @@ partir de las variables restantes.
 
 ---
 
-## Los datos no están en este repositorio
+## Qué datos hay aquí
 
-Los microdatos de Saber 11 pesan cerca de **8,5 GB** y son propiedad del Instituto
-Colombiano para la Evaluación de la Educación (Icfes), que los publica de forma
-abierta con sus propios términos de uso. Este repositorio incluye **el código que
-los descarga y procesa**, y **los resultados derivados** que permiten reproducir
-todas las tablas y figuras del artículo sin volver a ejecutar el flujo completo.
+**Sí está incluida la muestra analítica** (`data/muestra_analitica.parquet`,
+31 MB): las 2.774.006 filas y 11.230 colegios que usa el análisis, con las 33
+variables del modelo. Con ella se reproducen todas las tablas y figuras del
+artículo sin descargar nada más.
 
-Consulte [`data/README.md`](data/README.md) para las instrucciones de descarga.
+**No están los microdatos originales.** Pesan cerca de **9,1 GB** y son propiedad
+del Instituto Colombiano para la Evaluación de la Educación (Icfes), que los
+publica de forma abierta con sus propios términos de uso. GitHub además rechaza
+archivos de más de 100 MB y cada cohorte ronda los 420 MB. El repositorio incluye
+el código que los procesa (`src/construir_muestra.py`) y las instrucciones de
+descarga en [`data/README.md`](data/README.md).
 
 > El Icfes revisa retroactivamente los archivos publicados. Los resultados de este
 > repositorio corresponden a la descarga del **1 de agosto de 2026**. El registro de

@@ -41,15 +41,37 @@ def n3(v):
 
 
 # ------------------------------------------------------------------ figura 1
+MUESTRA = Path('data/muestra_analitica.parquet')
+
+
+def brecha_por_cohorte(muestra: Path = MUESTRA):
+    """Brecha urbano-rural por cohorte, calculada desde la muestra analitica.
+
+    Se calcula en vez de escribirse a mano: una transcripcion manual ya
+    introdujo una vez valores erroneos en el texto y en la figura.
+    Si la muestra no esta disponible, se devuelven los valores publicados.
+    """
+    publicados = {2018: 23.6, 2019: 23.6, 2022: 26.0, 2023: 24.8, 2024: 25.9}
+    if not muestra.exists():
+        return publicados, False
+    d = pd.read_parquet(muestra, columns=['periodo', 'cole_area_ubicacion', 'punt_global'])
+    g = d.groupby(['periodo', 'cole_area_ubicacion'], observed=True).punt_global.mean().unstack()
+    serie = (g['URBANO'] - g['RURAL'])
+    return {int(str(p)[:4]): round(float(v), 1) for p, v in serie.items()}, True
+
+
 def figura_1(res: Path, out: Path):
     """Brecha urbano-rural y validacion contra la serie publicada por el LEE.
 
-    Las cifras de este estudio proceden de tabla1_composicion.csv; la serie del
-    LEE se transcribe de los informes 92 y 98 y no es reproducible por codigo.
+    La serie propia se calcula desde la muestra analitica; la del LEE se
+    transcribe de los informes 92 y 98 y no es reproducible por codigo.
     """
     anios = np.array([2018, 2019, 2020, 2021, 2022, 2023, 2024], float)
     nan = np.nan
-    propia = np.array([23.5, 23.5, nan, nan, 26.1, 24.8, 25.9])
+    calculada, desde_datos = brecha_por_cohorte()
+    propia = np.array([calculada.get(int(a), nan) for a in anios])
+    if not desde_datos:
+        print('    (Figura 1: sin muestra analitica, se usan los valores publicados)')
     lee = np.array([nan, 24.1, 25.6, 26.0, 26.4, 25.2, nan])   # informes 92 y 98
 
     f, a = plt.subplots(figsize=(6.4, 3.3))

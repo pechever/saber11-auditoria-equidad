@@ -1,7 +1,34 @@
 # Datos
 
-Este directorio está vacío en el repositorio. Los microdatos pesan cerca de
-8,5 GB y pertenecen al Icfes, que los publica con sus propios términos de uso.
+## `muestra_analitica.parquet` — incluido en el repositorio (31 MB)
+
+Es la muestra que realmente usa el análisis: **2.774.006 filas de 11.230
+colegios**, con las 33 variables del modelo, construida desde los microdatos
+originales por `src/construir_muestra.py`. Reproduce todas las cifras del
+artículo sin necesidad de descargar los 9,1 GB de archivos originales.
+
+Lleva aplicadas la homologación de etiquetas y la exclusión de inscritos
+individuales que se documentan en el artículo. Las variables derivadas
+(hacinamiento y tasa histórica del colegio) **no** están guardadas: las calcula
+`src/fairness_pipeline.py`, porque la tasa histórica debe estimarse solo sobre
+las cohortes de entrenamiento.
+
+Verificación rápida de que coincide con la Tabla 3 del artículo:
+
+```python
+import pandas as pd
+df = pd.read_parquet('data/muestra_analitica.parquet')
+print(len(df), df.cole_cod_dane_establecimiento.nunique())   # 2774006 11230
+print(df.groupby('periodo').size())
+```
+
+---
+
+## Microdatos originales — no incluidos
+
+Pesan cerca de 9,1 GB y pertenecen al Icfes, que los publica con sus propios
+términos de uso. GitHub rechaza archivos de más de 100 MB y cada cohorte ronda
+los 420 MB, así que no pueden versionarse aquí.
 
 ## 1. Microdatos de Saber 11 (obligatorios para el flujo completo)
 

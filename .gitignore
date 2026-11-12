@@ -2,8 +2,12 @@
 data/raw/
 data/interim/
 data/processed/
+
+# la muestra analitica derivada (31 MB) SI se versiona
+!data/muestra_analitica.parquet
 *.zip
 *.parquet
+!data/muestra_analitica.parquet
 *.TXT
 *.txt
 
